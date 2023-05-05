@@ -8,7 +8,9 @@ AFRAME.registerComponent('color-on-mouseenter', {
     var data = this.data;
     var el = this.el;
     var defaultColor = el.getAttribute('material').color;
-    var defaultScale = el.getAttribute('scale');
+    var defaultScale = '0.8 0.8 0.8'; // asigna una nueva escala por defecto
+    var isScaled = false;
+
     this.el.addEventListener('mouseenter', function () {
       el.setAttribute('material', 'color', data.to);
     });
@@ -18,10 +20,17 @@ AFRAME.registerComponent('color-on-mouseenter', {
     });
 
     this.el.addEventListener('click', function () {
-      el.setAttribute('scale', data.scale);
+      if (isScaled) {
+        el.setAttribute('scale', defaultScale);
+        isScaled = false;
+      } else {
+        el.setAttribute('scale', data.scale);
+        isScaled = true;
+      }
     });
   }
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

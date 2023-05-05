@@ -100,11 +100,13 @@
     <a-entity id="y-axis" line="start: 0 -50 0; end: 0 50 0; color: green;"></a-entity>
     <a-entity id="z-axis" line="start: 0 0 -50; end: 0 0 50; color: blue;"></a-entity>
 
-    <a-sphere id="my-sphere" position="0 1 0" radius="0.5" color="white" color-on-mouseenter="to: red; scale: 1.5 1.5 1.5"
+    <a-sphere id="my-sphere" scale="0.8 0.8 0.8" position="0 1 0" radius="0.5" color="white"
+      color-on-mouseenter="to: red; scale: 1.5 1.5 1.5"
       animation="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"></a-sphere>
-    <a-cylinder position="2 1 0" radius="0.5" height="1" color="white"
+    <a-cylinder position="2 1 0" scale="0.8 0.8 0.8" radius="0.5" height="1" color="white"
       color-on-mouseenter="to: blue; scale: 1.5 1.5 1.5"></a-cylinder>
-    <a-box position="-2 1 0" scale="1 1 1" color="white" color-on-mouseenter="to: green; scale: 1.5 1.5 1.5"></a-box>
+    <a-box position="-2 1 0" scale="0.8 0.8 0.8" color="white"
+      color-on-mouseenter="to: green; scale: 1.5 1.5 1.5"></a-box>
 
     <a-camera position="0 1.6 3">
       <a-cursor></a-cursor>

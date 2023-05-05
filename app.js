@@ -1,30 +1,42 @@
 AFRAME.registerComponent('color-on-mouseenter', {
   schema: {
-  to: { default: '#FF0000', type: 'color' }
+    to: { default: '#FF0000', type: 'color' },
+    scale: { default: '1 1 1', type: 'string' }
   },
-  
-  init: function () {
-  var data = this.data;
-  var el = this.el;
-  this.el.addEventListener('mouseenter', function () {
-  el.setAttribute('material', 'color', data.to);
-  });
-  }
-  });
 
-document.addEventListener("DOMContentLoaded", function() {
+  init: function () {
+    var data = this.data;
+    var el = this.el;
+    var defaultColor = el.getAttribute('material').color;
+    var defaultScale = el.getAttribute('scale');
+    this.el.addEventListener('mouseenter', function () {
+      el.setAttribute('material', 'color', data.to);
+    });
+
+    this.el.addEventListener('mouseleave', function () {
+      el.setAttribute('material', 'color', defaultColor);
+    });
+
+    this.el.addEventListener('click', function () {
+      el.setAttribute('scale', data.scale);
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
   const editButton = document.getElementById('edit-button');
   const editor = document.getElementById('editor');
   const editorContainer = document.getElementById('editor-container');
 
-  editButton.addEventListener('click', function() {
+  editButton.addEventListener('click', function () {
     editor.style.display = 'block';
   });
 
 
   const addCubeButton = document.getElementById('add-cube');
 
-  addCubeButton.addEventListener('click', function() {
+  addCubeButton.addEventListener('click', function () {
     const cube = document.createElement('a-box');
     cube.setAttribute('position', `${document.getElementById('x-pos').value} ${document.getElementById('y-pos').value} ${document.getElementById('z-pos').value}`);
     cube.setAttribute('color', '#0087FF');
@@ -36,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const updatePositionButton = document.getElementById('update-position');
 
-  updatePositionButton.addEventListener('click', function() {
+  updatePositionButton.addEventListener('click', function () {
     const selectedObject = document.querySelector('a-sphere');
     const xPosInput = document.getElementById('edit-x-pos');
     const yPosInput = document.getElementById('edit-y-pos');
@@ -44,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
     selectedObject.setAttribute('position', `${xPosInput.value} ${yPosInput.value} ${zPosInput.value}`);
   });
 
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function (event) {
     if (!editorContainer.contains(event.target)) {
       editor.style.display = 'none';
     }

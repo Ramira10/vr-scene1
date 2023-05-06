@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
   updatePositionButton.addEventListener('click', function () {
     const selectedObject = document.querySelector('a-sphere');
     const xPosInput = document.getElementById('edit-x-pos');
-    const yPosInput = document.getElementById('edit-y-pos');
+    // const yPosInput = document.getElementById('edit-y-pos');
     const zPosInput = document.getElementById('edit-z-pos');
-    selectedObject.setAttribute('position', `${xPosInput.value} ${yPosInput.value} ${zPosInput.value}`);
+    selectedObject.setAttribute('position', `${xPosInput.value} 2.2 ${zPosInput.value}`);
   });
 
   document.addEventListener('click', function (event) {

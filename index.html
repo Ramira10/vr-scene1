@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Mi escena de realidad virtual</title>
+  <title>Escena 1</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
   <script src="app.js"></script>
@@ -109,7 +109,7 @@
       color-on-mouseenter="to: green; scale: 1.5 1.5 1.5"></a-box>
 
     <a-camera position="0 1.6 3">
-      <a-cursor></a-cursor>
+      <a-cursor raycaster="objects: .clickable"></a-cursor>
     </a-camera>
 
     <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
